@@ -7,8 +7,8 @@ int lIR = 940;
 int AVGBUFFER = 100; 
 int inputPin = 0;
 
-// since this array is big, initialize it here
-int [] vals = new int[AVGBUFFER];
+// declare this global array
+int [] vals;
 
 void setup() { 
   pinMode(RED, OUTPUT);       // set RED pin to output 
@@ -18,6 +18,9 @@ void setup() {
   digitalWrite(IR, HIGH);     // turn off IR LED
   Serial.begin(9600);         // launch communications
 
+  // initialize the big array
+  vals = new int[AVGBUFFER];
+
 } 
 
 void loop() { 
@@ -25,9 +28,9 @@ void loop() {
   float irOut, redOut, ratio;
 
   // measure the RMS transmission for the two wavelengths 
-  // with a short delay between them
+  // at separate times
   redOut = readingRED(); 
-  delay(1);
+  // delay(1);
   irOut = readingIR(); 
 
   ratio = calculateSPO2(irOut, redOut); 
