@@ -8,7 +8,7 @@ int AVGBUFFER = 100;
 int inputPin = 0;
 
 // declare this global array
-int [] vals;
+int vals[AVGBUFFER];
 
 void setup() { 
   pinMode(RED, OUTPUT);       // set RED pin to output 
@@ -17,10 +17,6 @@ void setup() {
   digitalWrite(RED, HIGH);    // turn off RED LED 
   digitalWrite(IR, HIGH);     // turn off IR LED
   Serial.begin(9600);         // launch communications
-
-  // initialize the big array
-  vals = new int[AVGBUFFER];
-
 } 
 
 void loop() { 
